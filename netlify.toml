@@ -1,5 +1,5 @@
 [build]
-    functions = "functions"
+    functions="functions"
 [[redirects]]
     from="./*"
-    to="./netlify/functions/api/:splash"
+    to="/.netlify/functions/api/:splash"
