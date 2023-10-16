@@ -15,7 +15,14 @@ router.use((req, res, next) => {
 
 router.get('/cnb/daily', async (req, res) => {
     try {
-        const cnbApiUrl = 'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt';
+        const date = req.query.date;
+
+        if (date)
+            var cnbApiUrl = 'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt?date=' + date;
+        else {
+            cnbApiUrl = 'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt';
+        }
+
         const response = await fetch(cnbApiUrl);
         const data = await response.text();
 
